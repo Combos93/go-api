@@ -4,21 +4,20 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 )
 
 type APIServer struct {
 	config *Config
 	logger *logrus.Logger
-	router *mux.Router
+	router *http.ServeMux
 }
 
 func New(config *Config) *APIServer {
 	return &APIServer{
 		config: config,
 		logger: logrus.New(),
-		router: mux.NewRouter(),
+		router: http.NewServeMux(),
 	}
 }
 
