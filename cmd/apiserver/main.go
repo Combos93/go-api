@@ -9,7 +9,7 @@ import (
 
 func main() {
 	envs, err := godotenv.Read(".env")
-	checkError(err)
+	checkErrorAndReact(err)
 
 	config := apiserver.NewConfig(envs)
 	s := apiserver.New(config)
@@ -19,7 +19,7 @@ func main() {
 	}
 }
 
-func checkError(err error) {
+func checkErrorAndReact(err error) {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
